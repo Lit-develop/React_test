@@ -105,7 +105,6 @@ function Menu() {
       // Главный компонент приложения
       function App() {
         return (
-          <Menu />
           <div className="container">
             <Greeting name="уважаемый пользователь!" />
             
@@ -127,7 +126,7 @@ function Menu() {
                 description="Описание третьей карточки." 
               />
             </div>
-            
+            <Menu/>
             {/* Кнопки */}
             <div className="text-center mt-4">
               <BasicButton btn_msg="Первая кнопка была нажата!" />
