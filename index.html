@@ -108,6 +108,9 @@ function Menu() {
       
       
   {/* Модальное окно */}
+  // Модальное окно как React компонент
+  function ExampleModal() {
+  return (
   <div
     className="modal fade"
     id="exampleModal"
@@ -143,7 +146,7 @@ function Menu() {
         </div>
       </div>
     </div>
-  </div>
+  </div>)}
 
       
       // Компонент приветствия
@@ -209,6 +212,7 @@ function Menu() {
               <BasicButton btn_msg="Вторая кнопка тоже была нажата!" />
               <ModalButton />
             </div>
+            <ExampleModal />
             <Menu/>
           </div>
         );
