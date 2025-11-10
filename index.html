@@ -28,40 +28,56 @@
       }
 
 
-      // Компонент приветствия
-      function Card({ img_url, title, description}) {
-      return (
-      <div className="container">
-      <div className="row">
-        <div className="col-md-4">
-          <div className="row justify-content-center">
-          <div className="card" style={{ width: "18rem", marginTop:'20px', marginRight:'10px' }}>
-            <img src={img_url} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">{title}</h5>
-              <p className="card-text">
-                {description}
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
+      // Компонент карточки - упрощен для горизонтального расположения
+      function Card({ img_url, title, description }) {
+        return (
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <img src={img_url} className="card-img-top" alt={title} style={{height: "200px", objectFit: "cover"}} />
+              <div className="card-body d-flex flex-column">
+                <h5 className="card-title">{title}</h5>
+                <p className="card-text flex-grow-1">
+                  {description}
+                </p>
+                <a href="#" className="btn btn-primary mt-auto">
+                  Go somewhere
+                </a>
+              </div>
             </div>
           </div>
-          </div>
-        </div>
-      </div>
-      </div>);
+        );
       }
 
       // Главный компонент приложения
       function App() {
         return (
-          <div>
+          <div className="container">
             <Greeting name="уважаемый пользователь!" />
-            <Card img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" title="Hello!" description="Описание карточки." />
-            <Card img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" title="Hello2" description="Описание второй карточки." />
-            <BasicButton btn_msg="Кнопка была нажата" />
-            <BasicButton btn_msg="Эта кнопка тоже была нажата" />
+            
+            {/* Карточки в один ряд */}
+            <div className="row justify-content-center">
+              <Card 
+                img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" 
+                title="Первая карточка" 
+                description="Описание первой карточки." 
+              />
+              <Card 
+                img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" 
+                title="Вторая карточка" 
+                description="Описание второй карточки." 
+              />
+              <Card 
+                img_url="https://avatars.mds.yandex.net/i?id=7e7fc0b4655b9f1753a5953c5a9133a2_l-5234815-images-thumbs&n=13" 
+                title="Третья карточка" 
+                description="Описание третьей карточки." 
+              />
+            </div>
+            
+            {/* Кнопки */}
+            <div className="text-center mt-4">
+              <BasicButton btn_msg="Первая кнопка была нажата!" />
+              <BasicButton btn_msg="Вторая кнопка тоже была нажата!" />
+            </div>
           </div>
         );
       }
