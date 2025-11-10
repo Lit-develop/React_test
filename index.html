@@ -19,7 +19,7 @@
           alert(btn_msg);
         };
 
-        return <button onClick={handleClick} type="button" class="btn btn-primary"style={{marginRight:'20px'}}>Нажми меня</button>;
+        return <button onClick={handleClick} type="button" className="btn btn-primary"style={{marginRight:'20px'}}>Нажми меня</button>;
       }
 
       // Menu
@@ -106,6 +106,7 @@ function Menu() {
       function App() {
         return (
           <div className="container">
+            <Menu/>
             <Greeting name="уважаемый пользователь!" />
             
             {/* Карточки в один ряд */}
@@ -131,7 +132,7 @@ function Menu() {
                 description="Описание четвертой карточки." 
               />
             </div>
-            <Menu/>
+            
             {/* Кнопки */}
             <div className="text-center mt-4">
               <BasicButton btn_msg="Первая кнопка была нажата!" />
