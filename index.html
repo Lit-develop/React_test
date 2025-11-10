@@ -31,6 +31,7 @@
       // Компонент приветствия
       function Card({ img_url }) {
       return (
+      <div class="container">
       <div className="row">
         <div className="col">
           <div className="row justify-content-center">
@@ -49,6 +50,7 @@
           </div>
           </div>
         </div>
+      </div>
       </div>);
       }
 
@@ -57,10 +59,8 @@
         return (
           <div>
             <Greeting name="уважаемый пользователь!" />
-            <div class="container">
-              <Card img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" />
-              <Card img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" />
-            </div>
+            <Card img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" />
+            <Card img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" />
             <BasicButton />
             <BasicButton />
           </div>
