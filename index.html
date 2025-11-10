@@ -21,7 +21,7 @@
           alert(btn_msg);
         };
 
-        return <button onClick={handleClick} type="button" className="btn btn-primary"style={{marginBottom:'20px'}}>Нажми меня</button>;
+        return <button onClick={handleClick} type="button" className="btn btn-primary"style={{marginRight:'20px', marginBottom: '10px'}}>Нажми меня</button>;
       }
 
       // Menu
@@ -144,7 +144,7 @@
       // Компонент карточки
       function Card({ img_url, title, description }) {
         return (
-          <div className="col-md-3 mb-3">
+          <div className="col-md-4 mb-4">
             <div className="card h-100">
               <img src={img_url} className="card-img-top" alt={title} style={{height: "200px", objectFit: "cover"}} />
               <div className="card-body d-flex flex-column">
