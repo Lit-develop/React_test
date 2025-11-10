@@ -16,7 +16,7 @@
       // Компонент кнопки
       function BasicButton({ btn_msg }) {
         const handleClick = () => {
-          alert("Hello!");
+          alert({btn_msg});
         };
 
         return <button onClick={handleClick}>Нажми меня</button>;
