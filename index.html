@@ -13,21 +13,8 @@
     <div id="root"></div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script>
-      // Используем делегирование событий для работы с динамически созданными элементами
-      document.addEventListener('DOMContentLoaded', function() {
-        document.addEventListener('shown.bs.modal', function(event) {
-          const modal = event.target;
-          const input = modal.querySelector('#myInput');
-          if (input) {
-            input.focus();
-          }
-        });
-      });
-    </script>
 
     <script type="text/babel">
-      import App2 from 'src/App_menus.js';
       // Компонент кнопки
       function BasicButton({ btn_msg }) {
         const handleClick = () => {
@@ -38,124 +25,123 @@
       }
 
       // Menu
-function Menu() {
+      function Menu() {
+        return (
+          <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+              <a className="navbar-brand" href="#">
+                <img
+                  src="https://cdn.dribbble.com/userupload/23831354/file/original-0df6ac50ca127e53a44223e3886e7fa5.jpg?resize=1600x1200"
+                  width={68}
+                  height={50}
+                  style={{marginRight:'10px'}}
+                />
+                ДикиеЯгоды 
+              </a>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNav" style={{justifyContent: 'flex-end'}}>
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">
+                      Главная
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      Отзывы
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      Доставка
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link disabled" aria-disabled="true">
+                      Удалить WB
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        );
+      }
 
-  return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">
-      <img
-  src="https://cdn.dribbble.com/userupload/23831354/file/original-0df6ac50ca127e53a44223e3886e7fa5.jpg?resize=1600x1200"
-  width={68}
-  height={50}
-  style={{marginRight:'10px'}}
-/>
-      ДикиеЯгоды </a>
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span className="navbar-toggler-icon" />
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav" style={{justifyContent: 'flex-end'}}>
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">
-            Главная
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-            Отзывы
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-            Доставка
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">
-            Удалить WB
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-  )
-}
-
-  
-  {/* Кнопка-триггер модального окна */}
-  function ModalButton() {
-
-  return (
-  <button
-    type="button"
-    className="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-  >
-    Запустите демо модального окна
-  </button>
-    )}
-      
-      
-  {/* Модальное окно */}
-  // Модальное окно как React компонент
-  function ExampleModal() {
-  return (
-  <div
-    className="modal fade"
-    id="exampleModal"
-    tabIndex={-1}
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h1 className="modal-title fs-5" id="exampleModalLabel">
-            Заголовок модального окна
-          </h1>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Закрыть"
-          />
-        </div>
-        <div className="modal-body">...</div>
-        <div className="modal-footer">
-          <button
-            type="button"
-            className="btn btn-secondary"
-            data-bs-dismiss="modal"
+      // Модальное окно как React компонент
+      function ExampleModal() {
+        return (
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabIndex={-1}
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
           >
-            Закрыть
-          </button>
-          <button type="button" className="btn btn-primary">
-            Сохранить изменения
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>)}
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    Заголовок модального окна
+                  </h1>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Закрыть"
+                  />
+                </div>
+                <div className="modal-body">
+                  Содержимое модального окна...
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрыть
+                  </button>
+                  <button type="button" className="btn btn-primary">
+                    Сохранить изменения
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
 
-      
+      // Кнопка-триггер модального окна
+      function ModalButton() {
+        return (
+          <button
+            type="button"
+            className="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Запустите демо модального окна
+          </button>
+        );
+      }
+
       // Компонент приветствия
       function Greeting({ name }) {
         return <h1>Доброе утро, {name}</h1>;
       }
 
-
-      // Компонент карточки - упрощен для горизонтального расположения
+      // Компонент карточки
       function Card({ img_url, title, description }) {
         return (
           <div className="col-md-4 mb-4">
@@ -179,41 +165,41 @@ function Menu() {
       function App() {
         return (
           <div>
-          <Menu/>
-          <div className="container">
-            <Greeting name="уважаемый пользователь!" />
-            
-            {/* Карточки в один ряд */}
-            <div className="row justify-content-center">
-              <Card 
-                img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" 
-                title="Первая карточка" 
-                description="Описание первой карточки." 
-              />
-              <Card 
-                img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" 
-                title="Вторая карточка" 
-                description="Описание второй карточки." 
-              />
-              <Card 
-                img_url="https://avatars.mds.yandex.net/get-mpic/5320546/img_id3470072419394008481.jpeg/orig" 
-                title="Третья карточка" 
-                description="Описание третьей карточки." 
-              />
-              <Card 
-                img_url="https://i.pinimg.com/originals/50/c3/36/50c336a06bc111b16f32739c2440ca22.jpg" 
-                title="Четвертая карточка" 
-                description="Описание четвертой карточки." 
-              />
-            </div>
-            
-            {/* Кнопки */}
-            <div className="text-center mt-4">
-              <BasicButton btn_msg="Первая кнопка была нажата!" />
-              <BasicButton btn_msg="Вторая кнопка тоже была нажата!" />
-              <ModalButton />
-            </div>
-            <ExampleModal />
+            <Menu/>
+            <div className="container">
+              <Greeting name="уважаемый пользователь!" />
+              
+              {/* Карточки в один ряд */}
+              <div className="row justify-content-center">
+                <Card 
+                  img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" 
+                  title="Первая карточка" 
+                  description="Описание первой карточки." 
+                />
+                <Card 
+                  img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" 
+                  title="Вторая карточка" 
+                  description="Описание второй карточки." 
+                />
+                <Card 
+                  img_url="https://avatars.mds.yandex.net/get-mpic/5320546/img_id3470072419394008481.jpeg/orig" 
+                  title="Третья карточка" 
+                  description="Описание третьей карточки." 
+                />
+                <Card 
+                  img_url="https://i.pinimg.com/originals/50/c3/36/50c336a06bc111b16f32739c2440ca22.jpg" 
+                  title="Четвертая карточка" 
+                  description="Описание четвертой карточки." 
+                />
+              </div>
+              
+              {/* Кнопки */}
+              <div className="text-center mt-4">
+                <BasicButton btn_msg="Первая кнопка была нажата!" />
+                <BasicButton btn_msg="Вторая кнопка тоже была нажата!" />
+                <ModalButton />
+              </div>
+              <ExampleModal />
             </div>
             <Menu/>
           </div>
