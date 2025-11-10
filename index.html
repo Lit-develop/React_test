@@ -24,7 +24,7 @@
           }
         });
       });
-    import App from 'src/App';
+    import App_visibility from 'src/App_visibility';
     </script>
 
 
@@ -177,7 +177,7 @@ function Menu() {
       }
 
       // Главный компонент приложения
-      function App_index() {
+      function App() {
         return (
           <div>
           <Menu/>
@@ -213,7 +213,7 @@ function Menu() {
               <BasicButton btn_msg="Первая кнопка была нажата!" />
               <BasicButton btn_msg="Вторая кнопка тоже была нажата!" />
               <ModalButton />
-              <App />
+              <App_visibility />
             </div>
             <ExampleModal />
             </div>
@@ -223,7 +223,7 @@ function Menu() {
       }
 
       // Рендерим приложение
-      ReactDOM.render(<App_index />, document.getElementById("root"));
+      ReactDOM.render(<App />, document.getElementById("root"));
     </script>
   </body>
 </html>
