@@ -24,6 +24,7 @@
           }
         });
       });
+    import App from 'src/App';
     </script>
 
 
@@ -176,12 +177,11 @@ function Menu() {
       }
 
       // Главный компонент приложения
-      function App() {
+      function App_index() {
         return (
           <div>
           <Menu/>
           <div className="container">
-            //<Menu/>
             <Greeting name="уважаемый пользователь!" />
             
             {/* Карточки в один ряд */}
@@ -222,7 +222,7 @@ function Menu() {
       }
 
       // Рендерим приложение
-      ReactDOM.render(<App />, document.getElementById("root"));
+      ReactDOM.render(<App_index />, document.getElementById("root"));
     </script>
   </body>
 </html>
