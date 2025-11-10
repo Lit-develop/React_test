@@ -16,7 +16,7 @@
       // Компонент кнопки
       function BasicButton({ btn_msg }) {
         const handleClick = () => {
-          alert({ btn_msg });
+          alert("Hello!");
         };
 
         return <button onClick={handleClick}>Нажми меня</button>;
@@ -29,7 +29,7 @@
 
 
       // Компонент приветствия
-      function Card({ img_url }) {
+      function Card({ img_url }, {title}, {discription) {
       return (
       <div class="container">
       <div className="row">
@@ -59,7 +59,7 @@
         return (
           <div>
             <Greeting name="уважаемый пользователь!" />
-            <Card img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" />
+            <Card img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" title="Hello!" description />
             <Card img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" />
             <BasicButton btn_msg="Кнопка была нажата" />
             <BasicButton btn_msg="Эта кнопка тоже была нажата" />
