@@ -30,8 +30,10 @@
 
       // Компонент приветствия
       function Card({ img_url }) {
-        return (<div className="row">
+      return (
+      <div className="row">
         <div className="col">
+          <div className="row justify-content-center">
           <div className="card" style={{ width: "18rem", marginTop:'20px', marginRight:'10px' }}>
             <img src={img_url} className="card-img-top" alt="..." />
             <div className="card-body">
@@ -44,6 +46,7 @@
                 Go somewhere
               </a>
             </div>
+          </div>
           </div>
         </div>
       </div>);
