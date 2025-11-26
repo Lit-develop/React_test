@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>React App</title>
+    <title>React App - ДикиеЯгоды</title>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
@@ -143,9 +143,9 @@
       }
 
       // Компонент карточки
-      function Card({ img_url, title, description }) {
+      function Card({ img_url, title, description, price }) {
         return (
-          <div className="col-md-4 mb-4">
+          <div className="col-md-4 col-lg-3 mb-4">
             <div className="card h-100">
               <img src={img_url} className="card-img-top" alt={title} style={{height: "200px", objectFit: "cover"}} />
               <div className="card-body d-flex flex-column">
@@ -153,6 +153,7 @@
                 <p className="card-text flex-grow-1">
                   {description}
                 </p>
+                {price && <p className="card-text fw-bold">Цена: {price} руб.</p>}
                 <a href="#" className="btn btn-primary mt-auto">
                   Добавить в корзину
                 </a>
@@ -162,37 +163,87 @@
         );
       }
 
+      // Компонент состояния загрузки
+      function LoadingSpinner() {
+        return (
+          <div className="d-flex justify-content-center my-5">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Загрузка...</span>
+            </div>
+          </div>
+        );
+      }
+
+      // Компонент ошибки
+      function ErrorMessage({ message }) {
+        return (
+          <div className="alert alert-danger my-4" role="alert">
+            <h4 className="alert-heading">Ошибка загрузки данных</h4>
+            <p>{message}</p>
+            <button className="btn btn-danger" onClick={() => window.location.reload()}>
+              Попробовать снова
+            </button>
+          </div>
+        );
+      }
+
       // Главный компонент приложения
       function App() {
+        const [items, setItems] = React.useState([]);
+        const [loading, setLoading] = React.useState(true);
+        const [error, setError] = React.useState(null);
+
+        // Загрузка данных из JSON файла
+        React.useEffect(() => {
+          const fetchItems = async () => {
+            try {
+              setLoading(true);
+              const response = await fetch('items.json');
+              
+              if (!response.ok) {
+                throw new Error(`Ошибка HTTP: ${response.status}`);
+              }
+              
+              const data = await response.json();
+              setItems(data);
+              setError(null);
+            } catch (err) {
+              setError(err.message);
+              console.error('Ошибка при загрузке данных:', err);
+            } finally {
+              setLoading(false);
+            }
+          };
+
+          fetchItems();
+        }, []);
+
         return (
           <div>
             <Menu/>
             <div className="container">
               <Greeting name="уважаемый пользователь!" />
               
-              {/* Карточки в один ряд */}
-              <div className="row justify-content-center">
-                <Card 
-                  img_url="https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13" 
-                  title="Первая карточка" 
-                  description="Описание первой карточки." 
-                />
-                <Card 
-                  img_url="https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13" 
-                  title="Вторая карточка" 
-                  description="Описание второй карточки." 
-                />
-                <Card 
-                  img_url="https://avatars.mds.yandex.net/get-mpic/5320546/img_id3470072419394008481.jpeg/orig" 
-                  title="Третья карточка" 
-                  description="Описание третьей карточки." 
-                />
-                <Card 
-                  img_url="https://i.pinimg.com/originals/50/c3/36/50c336a06bc111b16f32739c2440ca22.jpg" 
-                  title="Четвертая карточка" 
-                  description="Описание четвертой карточки." 
-                />
-              </div>
+              {/* Состояние загрузки */}
+              {loading && <LoadingSpinner />}
+              
+              {/* Сообщение об ошибке */}
+              {error && <ErrorMessage message={error} />}
+              
+              {/* Карточки, загруженные из JSON */}
+              {!loading && !error && (
+                <div className="row justify-content-center">
+                  {items.map(item => (
+                    <Card 
+                      key={item.id}
+                      img_url={item.img_url} 
+                      title={item.title} 
+                      description={item.description}
+                      price={item.price}
+                    />
+                  ))}
+                </div>
+              )}
               
               {/* Кнопки */}
               <div className="text-center mt-4">
