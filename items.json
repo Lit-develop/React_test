@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "img_url": "https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13",
+    "title": "Клубника",
+    "description": "Свежая сладкая клубника с полей Краснодарского края.",
+    "price": 350
+  },
+  {
+    "id": 2,
+    "img_url": "https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13",
+    "title": "Малина",
+    "description": "Ароматная малина, собранная в экологически чистых лесах.",
+    "price": 420
+  },
+  {
+    "id": 3,
+    "img_url": "https://avatars.mds.yandex.net/get-mpic/5320546/img_id3470072419394008481.jpeg/orig",
+    "title": "Черника",
+    "description": "Полезная черника с высоким содержанием антиоксидантов.",
+    "price": 280
+  },
+  {
+    "id": 4,
+    "img_url": "https://i.pinimg.com/originals/50/c3/36/50c336a06bc111b16f32739c2440ca22.jpg",
+    "title": "Ежевика",
+    "description": "Сочная ежевика с насыщенным вкусом и ароматом.",
+    "price": 380
+  }
+]
