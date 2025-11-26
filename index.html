@@ -58,7 +58,7 @@
                       style={{cursor: 'pointer'}}
                       title={theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на темную тему'}
                     >
-                      {theme === 'dark' ? '🌙' : '☀️'}
+                      {theme === 'dark' ? '☀️' : '🌙'}
                     </button>
                   </li>
                   <li className="nav-item">
@@ -208,7 +208,7 @@
       // Компонент карточки
       function Card({ id, img_url, title, description, price }) {
         return (
-          <div className="col-md-4 col-lg-3 mb-4" style={{marginTop:'20px'}}>
+          <div className="col-md-4 col-lg-3 mb-4">
             <div className="card h-100">
               <img src={img_url} className="card-img-top" alt={title} style={{height: "200px", objectFit: "cover"}} />
               <div className="card-body d-flex flex-column">
@@ -262,12 +262,32 @@
         );
       }
 
+      // Кнопка "Показать еще"
+      function LoadMoreButton({ onClick, disabled, hidden }) {
+        if (hidden) return null;
+        
+        return (
+          <div className="text-center mt-4">
+            <button 
+              type="button" 
+              className="btn btn-outline-primary"
+              onClick={onClick}
+              disabled={disabled}
+            >
+              {disabled ? 'Загрузка...' : 'Показать еще'}
+            </button>
+          </div>
+        );
+      }
+
       // Главный компонент приложения
       function App() {
         const [items, setItems] = React.useState([]);
         const [loading, setLoading] = React.useState(true);
         const [error, setError] = React.useState(null);
         const [theme, setTheme] = React.useState('dark');
+        const [visibleCount, setVisibleCount] = React.useState(4);
+        const [loadingMore, setLoadingMore] = React.useState(false);
 
         // Функция переключения темы
         const toggleTheme = () => {
@@ -313,10 +333,24 @@
           fetchItems();
         }, []);
 
+        // Функция для загрузки дополнительных карточек
+        const loadMore = () => {
+          setLoadingMore(true);
+          
+          // Имитируем задержку загрузки для лучшего UX
+          setTimeout(() => {
+            setVisibleCount(prevCount => prevCount + 4);
+            setLoadingMore(false);
+          }, 500);
+        };
+
+        // Определяем, есть ли еще карточки для загрузки
+        const hasMoreItems = visibleCount < items.length;
+
         return (
           <div>
             <Menu theme={theme} toggleTheme={toggleTheme} />
-            <div className="container" style={{marginTop:'20px'}}>
+            <div className="container">
               <Greeting name="уважаемый пользователь!" />
               
               {/* Состояние загрузки */}
@@ -327,18 +361,27 @@
               
               {/* Карточки, загруженные из JSON */}
               {!loading && !error && (
-                <div className="row justify-content-center">
-                  {items.map(item => (
-                    <Card 
-                      key={item.id}
-                      id={item.id}
-                      img_url={item.img_url} 
-                      title={item.title} 
-                      description={item.description}
-                      price={item.price}
-                    />
-                  ))}
-                </div>
+                <>
+                  <div className="row justify-content-center">
+                    {items.slice(0, visibleCount).map(item => (
+                      <Card 
+                        key={item.id}
+                        id={item.id}
+                        img_url={item.img_url} 
+                        title={item.title} 
+                        description={item.description}
+                        price={item.price}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Кнопка "Показать еще" */}
+                  <LoadMoreButton 
+                    onClick={loadMore}
+                    disabled={loadingMore}
+                    hidden={!hasMoreItems}
+                  />
+                </>
               )}
               
               {/* Кнопки */}
