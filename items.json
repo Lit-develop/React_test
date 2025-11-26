@@ -40,16 +40,16 @@
     "img_url": "https://img.freepik.com/premium-photo/red-kids-rubber-boots-isolated-on-white_884296-36192.jpg",
     "title": "Сапожки Красной Шапочки",
     "description": "Такие сапожки в разы ускорят вашу дорогу к бабушке, которая ой как хочет отведать свежих пирожков!",
-    "price": 380,
+    "price": 4820,
     "modal_call": "#modal_window_5",
     "modal_id": "modal_window_5"
   },
     {
     "id": 6,
-    "img_url": "https://gulyator.ru/image/cache/catalog/nordman/nordman%20kids%20velvet/nordman-kids-sinie-s-flisom-1-500x500.jpg",
+    "img_url": "https://russkaja-ohota.ru/wa-data/public/shop/products/62/75/77562/images/19167/19167.750x0.jpg",
     "title": "Сапоги охотника",
     "description": "Сапоги настоящего героя сказок: в таких и принцессу спасать не стыдно, и волка разделать не пыльно.",
-    "price": 380,
+    "price": 5240,
     "modal_call": "#modal_window_6",
     "modal_id": "modal_window_6"
   }
