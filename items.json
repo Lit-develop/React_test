@@ -4,53 +4,69 @@
     "img_url": "https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13",
     "title": "Клубника",
     "description": "Свежая сладкая клубника с полей Краснодарского края.",
-    "price": 350,
-    "modal_call": "#modal_window_1",
-    "modal_id": "modal_window_1"
+    "price": 350
   },
   {
     "id": 2,
     "img_url": "https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13",
     "title": "Малина",
     "description": "Ароматная малина, собранная в экологически чистых лесах.",
-    "price": 420,
-    "modal_call": "#modal_window_2",
-    "modal_id": "modal_window_2"
+    "price": 420
   },
   {
     "id": 3,
     "img_url": "https://avatars.mds.yandex.net/get-mpic/5320546/img_id3470072419394008481.jpeg/orig",
     "title": "Черника",
     "description": "Полезная черника с высоким содержанием антиоксидантов.",
-    "price": 280,
-    "modal_call": "#modal_window_3",
-    "modal_id": "modal_window_3"
+    "price": 280
   },
   {
     "id": 4,
     "img_url": "https://i.pinimg.com/originals/50/c3/36/50c336a06bc111b16f32739c2440ca22.jpg",
     "title": "Ежевика",
     "description": "Сочная ежевика с насыщенным вкусом и ароматом.",
-    "price": 380,
-    "modal_call": "#modal_window_4",
-    "modal_id": "modal_window_4"
+    "price": 380
   },
     {
     "id": 5,
     "img_url": "https://img.freepik.com/premium-photo/red-kids-rubber-boots-isolated-on-white_884296-36192.jpg",
     "title": "Сапожки Красной Шапочки",
     "description": "Такие сапожки в разы ускорят вашу дорогу к бабушке, которая ой как хочет отведать свежих пирожков!",
-    "price": 4820,
-    "modal_call": "#modal_window_5",
-    "modal_id": "modal_window_5"
+    "price": 4820
   },
     {
     "id": 6,
-    "img_url": "https://avatars.mds.yandex.net/i?id=221768d1f63782facd180ba07359877b_l-4055806-images-thumbs&n=13",
+    "img_url": "https://spinningline.ru/images/products_photo_providers/00341000/00341103/00341103_126509_LARGE.jpg",
     "title": "Сапоги охотника",
     "description": "Сапоги настоящего героя сказок: в таких и принцессу спасать не стыдно, и волка разделать не пыльно.",
-    "price": 5240,
-    "modal_call": "#modal_window_6",
-    "modal_id": "modal_window_6"
+    "price": 5240
+  },
+    {
+    "id": 7,
+    "img_url": "https://ir.ozone.ru/s3/multimedia-q/c1000/6149193566.jpg",
+    "title": "Спининг Бабушки",
+    "description": "Если ваша бабушка постоянно просит носить ей пирожки через весь лес, купите ей спининг - пусть уже рыбку себе ловит - и вкусно и полезно!",
+    "price": 3570
+  },
+    {
+    "id": 8,
+    "img_url": "https://ir.ozone.ru/s3/multimedia-c/c1000/6082842168.jpg",
+    "title": "Манок на волка",
+    "description": "Как подудеть, так ни один волк не устоит - прибежит как миленький, хвостом вилять будет.",
+    "price": 320
+  },
+    {
+    "id": 9,
+    "img_url": "https://i.ebayimg.com/images/g/LfEAAOSw~gRV5fU5/s-l1600.jpg",
+    "title": "Хрустальные туфельки",
+    "description": "Самые модные, самые трендовые во всех сезонах! Носить только неудобно, да и мазоли постоянно натирают.",
+    "price": 182479
+  },
+    {
+    "id": 10,
+    "img_url": "https://akademiya-chudes.ru/media/gallery-items/82f6f9/Kolpak_Vedma_Chernyj_s_cherepom_2.jpg",
+    "title": "Шапка невидимка",
+    "description": "Как мантия невидимка, только шапка. Легче, компактнее и стирать легче, главное, чтобы Ваша шалость удалась!",
+    "price": 5240
   }
 ]
