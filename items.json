@@ -4,41 +4,53 @@
     "img_url": "https://avatars.mds.yandex.net/i?id=78836c2f07e26d50e3bc57b376400b86_l-4869929-images-thumbs&n=13",
     "title": "Клубника",
     "description": "Свежая сладкая клубника с полей Краснодарского края.",
-    "price": 350
+    "price": 350,
+    "modal_call": "#modal_window_1",
+    "modal_id": "modal_window_1"
   },
   {
     "id": 2,
     "img_url": "https://avatars.mds.yandex.net/i?id=4dffd31f6c73340368e0eb1afea13e44_l-17022023-images-thumbs&n=13",
     "title": "Малина",
     "description": "Ароматная малина, собранная в экологически чистых лесах.",
-    "price": 420
+    "price": 420,
+    "modal_call": "#modal_window_2",
+    "modal_id": "modal_window_2"
   },
   {
     "id": 3,
     "img_url": "https://avatars.mds.yandex.net/get-mpic/5320546/img_id3470072419394008481.jpeg/orig",
     "title": "Черника",
     "description": "Полезная черника с высоким содержанием антиоксидантов.",
-    "price": 280
+    "price": 280,
+    "modal_call": "#modal_window_3",
+    "modal_id": "modal_window_3"
   },
   {
     "id": 4,
     "img_url": "https://i.pinimg.com/originals/50/c3/36/50c336a06bc111b16f32739c2440ca22.jpg",
     "title": "Ежевика",
     "description": "Сочная ежевика с насыщенным вкусом и ароматом.",
-    "price": 380
+    "price": 380,
+    "modal_call": "#modal_window_4",
+    "modal_id": "modal_window_4"
   },
     {
     "id": 5,
     "img_url": "https://img.freepik.com/premium-photo/red-kids-rubber-boots-isolated-on-white_884296-36192.jpg",
     "title": "Сапожки Красной Шапочки",
     "description": "Такие сапожки в разы ускорят вашу дорогу к бабушке, которая ой как хочет отведать свежих пирожков!",
-    "price": 380
+    "price": 380,
+    "modal_call": "#modal_window_5",
+    "modal_id": "modal_window_5"
   },
     {
     "id": 6,
     "img_url": "https://gulyator.ru/image/cache/catalog/nordman/nordman%20kids%20velvet/nordman-kids-sinie-s-flisom-1-500x500.jpg",
     "title": "Сапоги охотника",
     "description": "Сапоги настоящего героя сказок: в таких и принцессу спасать не стыдно, и волка разделать не пыльно.",
-    "price": 380
+    "price": 380,
+    "modal_call": "#modal_window_6",
+    "modal_id": "modal_window_6"
   }
 ]
