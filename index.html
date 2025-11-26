@@ -89,7 +89,35 @@
       }
 
       // Модальное окно как React компонент
-      function ExampleModal() {
+      function ExampleModal({ userName, setUserName }) {
+        const [name, setName] = React.useState(userName);
+        
+        const handleSave = () => {
+          setUserName(name);
+          // Закрываем модальное окно
+          const modalElement = document.getElementById('exampleModal');
+          const modal = bootstrap.Modal.getInstance(modalElement);
+          modal.hide();
+        };
+        
+        const handleChange = (e) => {
+          setName(e.target.value);
+        };
+        
+        // Сбрасываем значение при открытии модального окна
+        React.useEffect(() => {
+          const modalElement = document.getElementById('exampleModal');
+          const handleShowModal = () => {
+            setName(userName);
+          };
+          
+          modalElement.addEventListener('show.bs.modal', handleShowModal);
+          
+          return () => {
+            modalElement.removeEventListener('show.bs.modal', handleShowModal);
+          };
+        }, [userName]);
+
         return (
           <div
             className="modal fade"
@@ -102,7 +130,7 @@
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    Заголовок модального окна
+                    Изменение приветствия
                   </h1>
                   <button
                     type="button"
@@ -112,7 +140,20 @@
                   />
                 </div>
                 <div className="modal-body">
-                  Содержимое модального окна...
+                  <div className="mb-3">
+                    <label htmlFor="userName" className="form-label">Имя для приветствия:</label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      id="userName" 
+                      value={name}
+                      onChange={handleChange}
+                      placeholder="Введите ваше имя"
+                    />
+                    <div className="form-text">
+                      Текущее приветствие: "Доброе утро, {userName}"
+                    </div>
+                  </div>
                 </div>
                 <div className="modal-footer">
                   <button
@@ -122,7 +163,11 @@
                   >
                     Закрыть
                   </button>
-                  <button type="button" className="btn btn-primary">
+                  <button 
+                    type="button" 
+                    className="btn btn-primary"
+                    onClick={handleSave}
+                  >
                     Сохранить изменения
                   </button>
                 </div>
@@ -142,7 +187,7 @@
             data-bs-target="#exampleModal"
             style={{marginRight:'10px', marginBottom: '10px'}}
           >
-            Запустите демо модального окна
+            Изменить приветствие
           </button>
         );
       }
@@ -288,6 +333,7 @@
         const [theme, setTheme] = React.useState('dark');
         const [visibleCount, setVisibleCount] = React.useState(4);
         const [loadingMore, setLoadingMore] = React.useState(false);
+        const [userName, setUserName] = React.useState('уважаемый пользователь!');
 
         // Функция переключения темы
         const toggleTheme = () => {
@@ -306,7 +352,18 @@
             setTheme(savedTheme);
             document.documentElement.setAttribute('data-bs-theme', savedTheme);
           }
+          
+          // Восстановление имени из localStorage
+          const savedName = localStorage.getItem('userName');
+          if (savedName) {
+            setUserName(savedName);
+          }
         }, []);
+
+        // Сохранение имени в localStorage при изменении
+        React.useEffect(() => {
+          localStorage.setItem('userName', userName);
+        }, [userName]);
 
         // Загрузка данных из JSON файла
         React.useEffect(() => {
@@ -351,7 +408,7 @@
           <div>
             <Menu theme={theme} toggleTheme={toggleTheme} />
             <div className="container">
-              <Greeting name="уважаемый пользователь!" />
+              <Greeting name={userName} />
               
               {/* Состояние загрузки */}
               {loading && <LoadingSpinner />}
@@ -390,7 +447,7 @@
                 <BasicButton btn_msg="Вторая кнопка тоже была нажата!" />
                 <ModalButton />
               </div>
-              <ExampleModal />
+              <ExampleModal userName={userName} setUserName={setUserName} />
             </div>
             <Menu theme={theme} toggleTheme={toggleTheme} />
           </div>
