@@ -142,8 +142,61 @@
         return <h1>Доброе утро, {name}</h1>;
       }
 
+      // Компонент модального окна для карточки
+      function CardModal({ id, title, img_url, description, price }) {
+        return (
+          <div
+            className="modal fade"
+            id={`cardModal-${id}`}
+            tabIndex={-1}
+            aria-labelledby={`cardModalLabel-${id}`}
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-lg">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id={`cardModalLabel-${id}`}>
+                    {title}
+                  </h1>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Закрыть"
+                  />
+                </div>
+                <div className="modal-body">
+                  <div className="text-center mb-3">
+                    <img 
+                      src={img_url} 
+                      className="img-fluid rounded" 
+                      alt={title} 
+                      style={{maxHeight: "400px", objectFit: "cover"}} 
+                    />
+                  </div>
+                  <p className="mb-3">{description}</p>
+                  {price && <p className="fw-bold">Цена: {price} руб.</p>}
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрыть
+                  </button>
+                  <button type="button" className="btn btn-primary">
+                    Добавить в корзину
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       // Компонент карточки
-      function Card({ img_url, title, description, price }) {
+      function Card({ id, img_url, title, description, price }) {
         return (
           <div className="col-md-4 col-lg-3 mb-4">
             <div className="card h-100">
@@ -154,11 +207,23 @@
                   {description}
                 </p>
                 {price && <p className="card-text fw-bold">Цена: {price} руб.</p>}
-                <a href="#" className="btn btn-primary mt-auto">
+                <button 
+                  type="button" 
+                  className="btn btn-primary mt-auto"
+                  data-bs-toggle="modal"
+                  data-bs-target={`#cardModal-${id}`}
+                >
                   Открыть карточку
-                </a>
+                </button>
               </div>
             </div>
+            <CardModal 
+              id={id}
+              title={title}
+              img_url={img_url}
+              description={description}
+              price={price}
+            />
           </div>
         );
       }
@@ -236,61 +301,12 @@
                   {items.map(item => (
                     <Card 
                       key={item.id}
+                      id={item.modal_id}
                       img_url={item.img_url} 
                       title={item.title} 
                       description={item.description}
                       price={item.price}
-                  //  />
-                  //{/* Модальное окно */}
-  <div
-    className="modal fade"
-    id={items.modal_id}
-    tabIndex={-1}
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div className="modal-dialog modal-dialog-centered">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h1 className="modal-title fs-5" id="exampleModalLabel">
-            {items.title}
-          </h1>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Закрыть"
-          />
-        </div>
-        <div className="modal-body">
-          {/*Card body */}
-          <img
-          src={items.img_url}
-          className="card-img-top"
-          alt="..."
-        />
-        {items.discription}
-        </div>
-        <div className="modal-footer">
-          <button
-          type='button'
-          className='btn btn-primary'
-          >
-            Добавить в корзину
-          </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Закрыть
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-//{/* Окончание модального окна*/}
-                  />
+                    />
                   ))}
                 </div>
               )}
