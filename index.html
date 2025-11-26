@@ -208,7 +208,7 @@
       // Компонент карточки
       function Card({ id, img_url, title, description, price }) {
         return (
-          <div className="col-md-4 col-lg-3 mb-4">
+          <div className="col-md-4 col-lg-3 mb-4" style={{marginTop:'20px'}}>
             <div className="card h-100">
               <img src={img_url} className="card-img-top" alt={title} style={{height: "200px", objectFit: "cover"}} />
               <div className="card-body d-flex flex-column">
@@ -316,7 +316,7 @@
         return (
           <div>
             <Menu theme={theme} toggleTheme={toggleTheme} />
-            <div className="container">
+            <div className="container" style={{marginTop:'20px'}}>
               <Greeting name="уважаемый пользователь!" />
               
               {/* Состояние загрузки */}
