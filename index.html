@@ -25,7 +25,7 @@
       }
 
       // Menu
-      function Menu() {
+      function Menu({ theme, toggleTheme }) {
         return (
           <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -51,6 +51,16 @@
               </button>
               <div className="collapse navbar-collapse" id="navbarNav" style={{justifyContent: 'flex-end'}}>
                 <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <button 
+                      className="nav-link border-0 bg-transparent" 
+                      onClick={toggleTheme}
+                      style={{cursor: 'pointer'}}
+                      title={theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на темную тему'}
+                    >
+                      {theme === 'dark' ? '☀️' : '🌙'}
+                    </button>
+                  </li>
                   <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="#">
                       Главная
@@ -213,7 +223,7 @@
                   data-bs-toggle="modal"
                   data-bs-target={`#cardModal-${id}`}
                 >
-                  Открыть карточку
+                  Подробнее
                 </button>
               </div>
             </div>
@@ -257,6 +267,26 @@
         const [items, setItems] = React.useState([]);
         const [loading, setLoading] = React.useState(true);
         const [error, setError] = React.useState(null);
+        const [theme, setTheme] = React.useState('dark');
+
+        // Функция переключения темы
+        const toggleTheme = () => {
+          const newTheme = theme === 'dark' ? 'light' : 'dark';
+          setTheme(newTheme);
+          document.documentElement.setAttribute('data-bs-theme', newTheme);
+          
+          // Сохраняем тему в localStorage
+          localStorage.setItem('theme', newTheme);
+        };
+
+        // Восстановление темы из localStorage при загрузке
+        React.useEffect(() => {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+            setTheme(savedTheme);
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+          }
+        }, []);
 
         // Загрузка данных из JSON файла
         React.useEffect(() => {
@@ -285,7 +315,7 @@
 
         return (
           <div>
-            <Menu/>
+            <Menu theme={theme} toggleTheme={toggleTheme} />
             <div className="container">
               <Greeting name="уважаемый пользователь!" />
               
@@ -301,7 +331,7 @@
                   {items.map(item => (
                     <Card 
                       key={item.id}
-                      id={item.modal_id}
+                      id={item.id}
                       img_url={item.img_url} 
                       title={item.title} 
                       description={item.description}
@@ -319,7 +349,7 @@
               </div>
               <ExampleModal />
             </div>
-            <Menu/>
+            <Menu theme={theme} toggleTheme={toggleTheme} />
           </div>
         );
       }
