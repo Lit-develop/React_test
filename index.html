@@ -68,7 +68,7 @@
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link disabled" href="#">
+                    <a className="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                       Отзывы
                     </a>
                   </li>
@@ -88,7 +88,33 @@
           </nav>
         );
       }
-
+      
+      // Форма отправки отзыва
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Форма обратной связи</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <input 
+                      type="text" 
+                      className="form-control" 
+                      id="userName" 
+                      value={name}
+                      onChange={handleChange}
+                      placeholder="Введите ваш отзыв"
+                    />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
       // Модальное окно как React компонент
       function ExampleModal({ userName, setUserName }) {
         const [name, setName] = React.useState(userName);
