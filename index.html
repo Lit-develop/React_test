@@ -68,7 +68,7 @@
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link disabled" aria-disabled="true">
+                    <a className="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                       Отзывы
                     </a>
                   </li>
@@ -90,7 +90,7 @@
       }
       
       // Форма отправки отзыва
-<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="feedbackModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -112,6 +112,53 @@
     </div>
   </div>
 </div>
+  
+<div className="modal fade" id="feedbackModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel"> Форма обратной связи </h1>
+        <button type="button" className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Закрыть"
+                  />
+                </div>
+                <div className="modal-body">
+                  <div className="mb-3">
+                    <label htmlFor="userName" className="form-label">Имя для приветствия:</label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      id="userName" 
+                      value={name}
+                      onChange={handleChange}
+                      placeholder="Введите ваше имя"
+                    />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрыть
+                  </button>
+                  <button 
+                    type="button" 
+                    className="btn btn-primary"
+                    onClick={handleSave}
+                  >
+                    Отправить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      
       
       // Модальное окно как React компонент
       function ExampleModal({ userName, setUserName }) {
