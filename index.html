@@ -88,61 +88,7 @@
           </nav>
         );
       }
-      
-// Форма отправки отзыва
-<div
-  className="modal fade"
-  id="feedbackModal"
-  tabIndex={-1}
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h1 className="modal-title fs-5" id="exampleModalLabel">
-          Форма обратной связи
-        </h1>
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Закрыть"
-        />
-      </div>
-      <div className="modal-body">
-        <label htmlFor="userName" className="form-label">
-          Напишите Ваш отзыв:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="userName"
-          defaultValue={name} 
-          onChange={handleChange}
-          placeholder="Введите ваш отзыв"
-        />
-      </div>
-      <div className="modal-footer">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Закрыть
-        </button>
-        <button 
-          type="button" 
-          className="btn btn-primary"
-          onClick={handleSubmit}
-        >
-          Отправить
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-      
+            
       // Модальное окно как React компонент
       function ExampleModal({ userName, setUserName }) {
         const [name, setName] = React.useState(userName);
